@@ -28,11 +28,11 @@ For the full list of available installation options, please see the [Installatio
 ### Examples
 
 ```bash
-methodwebtest spider --targets https://example.com,https://example.dev
+methodwebtest nginx query reverseproxy --targets https://example.com,https://example.dev --redirectaddress 127.0.0.1
 ```
 
 ```bash
-methodwebtest path fuzz --targets example.com
+methodwebtest apache path traversal --targets https://example.com
 ```
 
 ## Contributing

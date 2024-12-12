@@ -14,6 +14,9 @@ func main() {
 
 	methodwebtest := cmd.NewMethodWebTest(version)
 	methodwebtest.InitRootCommand()
+	methodwebtest.InitGeneralCommand()
+	methodwebtest.InitNginxCommand()
+	methodwebtest.InitApacheCommand()
 
 	if err := methodwebtest.RootCmd.Execute(); err != nil {
 		os.Exit(1)

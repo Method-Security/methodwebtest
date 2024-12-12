@@ -5,7 +5,7 @@
 Running as a binary allows you to skip dealing with any container related networking issues and leverage the same network interface that the host machine is using.
 
 ```bash
-methodwebtest TODO
+methodwebtest apache path traversal --targets https://example.com
 ```
 
 ## Docker
@@ -16,5 +16,5 @@ If you're running on a Docker container on a MacOS machine and you are trying to
 
 ```bash
 docker run ghcr.io/method-security/methodwebtest \
-  TODO
+  apache path traversal --targets https://example.com
 ```
