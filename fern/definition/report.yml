@@ -1,0 +1,63 @@
+imports:
+  request: ./request.yml
+  configs: ./configs.yml
+types:
+  # Engine Configs
+  InjectionEngineConfig:
+    properties:
+      targets: list<string>
+      method: request.HttpMethod
+      paths: list<string>
+      baselinePayload: optional<map<string, string>>
+      injectedPayloads: list<map<string, string>>
+      injectionLocation: configs.InjectionLocation
+      eventType: request.EventType
+      timeout: integer
+      retries: integer
+      sleep: integer
+  HeaderMisconfigurationEngineConfig:
+    properties:
+      targets: list<string>
+      method: request.HttpMethod
+      payloads: list<list<map<string, string>>>
+      eventType: request.EventType
+      timeout: integer
+      retries: integer
+      sleep: integer
+  PathTraversalEngineConfig:
+    properties:
+      targets: list<string>
+      paths: optional<list<string>>
+      pathFiles: optional<list<string>>
+      queryParam: optional<string>
+      responseCodes: string
+      ignoreBaseContent: boolean
+      timeout: integer
+      retries: integer
+      sleep: integer
+      successfulOnly: boolean
+  EngineConfig:
+    union:
+      InjectionEngineConfig: InjectionEngineConfig
+      HeaderMisconfigurationEngineConfig: HeaderMisconfigurationEngineConfig
+      PathTraversalEngineConfig: PathTraversalEngineConfig
+  # Report Struct
+  AttemptInfo:
+    properties:
+      request: request.RequestInfo
+      timeSent: datetime
+      timeReceived: optional<datetime>
+      finding: optional<boolean>
+  TargetInfo:
+    properties:
+      target: string
+      startTimestamp: datetime
+      endTimestamp: datetime
+      requestCount: integer
+      baselineAttempt: optional<AttemptInfo>
+      attempts: list<AttemptInfo>
+  Report:
+    properties:
+      targets: optional<list<TargetInfo>>
+      config: optional<EngineConfig>
+      errors: optional<list<string>>

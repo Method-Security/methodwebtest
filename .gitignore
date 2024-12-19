@@ -44,7 +44,7 @@ go.work.sum
 # Fern Python
 generated/python/**
 
-# Webscan binary
+# MethodWebTest binary
 /methodwebtest
 
 # .DS_Store
