@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://method-security.github.io/methodwebtest/docs/index.html">
+        <link rel="canonical" href="https://method-security.github.io/methodwebtest/docs/nginx.html">
       
       
-        <link rel="prev" href="../getting-started/basic-usage.html">
+        <link rel="prev" href="apache.html">
       
       
-        <link rel="next" href="apache.html">
+        <link rel="next" href="general.html">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Overview - methodwebtest</title>
+        <title>Nginx - methodwebtest</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#capabilities" class="md-skip">
+        <a href="#nginx" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Nginx
             
           </span>
         </div>
@@ -490,30 +490,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Overview
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,53 +502,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#top-level-flags" class="md-nav__link">
-    <span class="md-ellipsis">
-      Top Level Flags
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Version Command
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      Output Formats
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -578,6 +511,8 @@
                 
   
   
+    
+  
   
   
     
@@ -592,11 +527,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
@@ -610,7 +545,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Capabilities
@@ -642,10 +577,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="nginx.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Nginx
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="nginx.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -654,6 +609,266 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Header
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Header">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bufferoverflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bufferoverflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bufferoverflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help Text
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traversal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Traversal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-text_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help Text
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reverseproxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverseproxy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reverseproxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-text_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help Text
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -901,29 +1116,242 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#top-level-flags" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Top Level Flags
+      Usage
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#version-command" class="md-nav__link">
+  <a href="#commands" class="md-nav__link">
     <span class="md-ellipsis">
-      Version Command
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Header
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Header">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#output-formats" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#commands_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Output Formats
+      Commands
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bufferoverflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bufferoverflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bufferoverflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help Text
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traversal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Traversal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-text_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help Text
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reverseproxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverseproxy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reverseproxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#help-text_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help Text
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -942,7 +1370,7 @@
                   
 
   
-    <a href="https://github.com/Method-Security/methodwebtest/blob/main/docs/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/Method-Security/methodwebtest/blob/main/docs/docs/nginx.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -950,26 +1378,107 @@
   
 
 
-<h1 id="capabilities">Capabilities<a class="headerlink" href="#capabilities" title="Permanent link">#</a></h1>
-<p>methodwebtest offers a variety of scanning techniques to security teams working to gain a better handle on what web applications they have deployed across cloud providers and on-premise environments. Each of the below pages offers you an in depth look at a methodwebtest capability related to a unique scanning technique.</p>
-<ul>
-<li><a href="apache.html">Apache</a></li>
-<li><a href="nginx.html">Nginx</a></li>
-<li><a href="general.html">General</a></li>
-</ul>
-<h2 id="top-level-flags">Top Level Flags<a class="headerlink" href="#top-level-flags" title="Permanent link">#</a></h2>
-<p>methodwebtest has several top level flags that can be used on any subcommand. These include:</p>
-<div class="highlight"><pre><span></span><code>Flags:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                 </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>methodwebtest
+<h1 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">#</a></h1>
+<p>The <code>methodwebtest nginx</code> command tests a target for Nginx specific vulnerabilities.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>nginx<span class="w"> </span><span class="o">[</span>command<span class="o">]</span>
+</code></pre></div>
+<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h2>
+<h3 id="header">Header<a class="headerlink" href="#header" title="Permanent link">#</a></h3>
+<h4 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>header<span class="w"> </span><span class="o">[</span>command<span class="o">]</span>
+</code></pre></div>
+<h4 id="commands_1">Commands<a class="headerlink" href="#commands_1" title="Permanent link">#</a></h4>
+<h5 id="bufferoverflow">Bufferoverflow<a class="headerlink" href="#bufferoverflow" title="Permanent link">#</a></h5>
+<p>Perform a buffer overflow test using the content header of a target</p>
+<h6 id="usage_2">Usage<a class="headerlink" href="#usage_2" title="Permanent link">#</a></h6>
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>header<span class="w"> </span>bufferoverflow<span class="w"> </span>--targets<span class="w"> </span>https://example.com<span class="w"> </span>--bodysize<span class="w"> </span><span class="m">5000</span><span class="w"> </span>--timeout<span class="w"> </span><span class="m">30</span>
+</code></pre></div>
+<h4 id="help-text">Help Text<a class="headerlink" href="#help-text" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>method<span class="w"> </span>nginx<span class="w"> </span>header<span class="w"> </span>bufferoverflow<span class="w"> </span>-h
+Perform<span class="w"> </span>a<span class="w"> </span>buffer<span class="w"> </span>overflow<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>content<span class="w"> </span>header<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>target
+
+Usage:
+<span class="w">  </span>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>header<span class="w"> </span>bufferoverflow<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+
+Flags:
+<span class="w">      </span>--bodysize<span class="w"> </span>int<span class="w">   </span>The<span class="w"> </span>size<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>body<span class="w"> </span>to<span class="w"> </span>send<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="m">5000</span><span class="o">)</span>
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">           </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>bufferoverflow
+
+Global<span class="w"> </span>Flags:
 <span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>string<span class="w">        </span>Output<span class="w"> </span>format<span class="w"> </span><span class="o">(</span>signal,<span class="w"> </span>json,<span class="w"> </span>yaml<span class="o">)</span>.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span>signal<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;signal&quot;</span><span class="o">)</span>
 <span class="w">  </span>-f,<span class="w"> </span>--output-file<span class="w"> </span>string<span class="w">   </span>Path<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>file.<span class="w"> </span>If<span class="w"> </span>blank,<span class="w"> </span>will<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>STDOUT
 <span class="w">  </span>-q,<span class="w"> </span>--quiet<span class="w">                </span>Suppress<span class="w"> </span>output
+<span class="w">      </span>--retries<span class="w"> </span>int<span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>attempts<span class="w"> </span>per<span class="w"> </span>credential<span class="w"> </span>pair
+<span class="w">      </span>--sleep<span class="w"> </span>int<span class="w">            </span>Sleep<span class="w"> </span><span class="nb">time</span><span class="w"> </span>between<span class="w"> </span>requests<span class="w"> </span><span class="o">(</span>seconds<span class="o">)</span>
+<span class="w">      </span>--targets<span class="w"> </span>strings<span class="w">      </span>The<span class="w"> </span>URL<span class="w"> </span>of<span class="w"> </span>target
+<span class="w">      </span>--timeout<span class="w"> </span>int<span class="w">          </span>Timeout<span class="w"> </span>per<span class="w"> </span>request<span class="w"> </span><span class="o">(</span>seconds<span class="o">)</span><span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="m">30</span><span class="o">)</span>
 <span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">              </span>Verbose<span class="w"> </span>output
 </code></pre></div>
-<h2 id="version-command">Version Command<a class="headerlink" href="#version-command" title="Permanent link">#</a></h2>
-<p>Run <code>methodwebtest version</code> to get the exact version information for your binary</p>
-<h2 id="output-formats">Output Formats<a class="headerlink" href="#output-formats" title="Permanent link">#</a></h2>
-<p>For more information on the various output formats that are supported by methodwebtest, see the <a href="https://method-security.github.io/docs/output.html">Output Formats</a> page in our organization wide documentation.</p>
+<h3 id="path">Path<a class="headerlink" href="#path" title="Permanent link">#</a></h3>
+<h4 id="usage_3">Usage<a class="headerlink" href="#usage_3" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>path<span class="w"> </span><span class="o">[</span>command<span class="o">]</span>
+</code></pre></div>
+<h4 id="commands_2">Commands<a class="headerlink" href="#commands_2" title="Permanent link">#</a></h4>
+<h5 id="traversal">Traversal<a class="headerlink" href="#traversal" title="Permanent link">#</a></h5>
+<p>Perform Nginx specific path traversal injection tests against a target</p>
+<h6 id="usage_4">Usage<a class="headerlink" href="#usage_4" title="Permanent link">#</a></h6>
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>path<span class="w"> </span>traversal<span class="w"> </span>--targets<span class="w"> </span>https://example.com<span class="w"> </span>--ignore-base-content-match<span class="w"> </span><span class="nb">false</span><span class="w"> </span>--responsecodes<span class="w"> </span><span class="m">200</span>-299<span class="w"> </span>--successfulonly
+</code></pre></div>
+<h6 id="help-text_1">Help Text<a class="headerlink" href="#help-text_1" title="Permanent link">#</a></h6>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>path<span class="w"> </span>traversal<span class="w">  </span>-h
+Perform<span class="w"> </span>a<span class="w"> </span>Nginx<span class="w"> </span>specific<span class="w"> </span>path<span class="w"> </span>traversal<span class="w"> </span><span class="k">for</span><span class="w"> </span>common<span class="w"> </span>file<span class="w"> </span>locations
+
+Usage:
+<span class="w">  </span>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>path<span class="w"> </span>traversal<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+
+Flags:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                        </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>traversal
+<span class="w">      </span>--ignore-base-content-match<span class="w">   </span>Ignores<span class="w"> </span>valid<span class="w"> </span>responses<span class="w"> </span>with<span class="w"> </span>identical<span class="w"> </span>size<span class="w"> </span>and<span class="w"> </span>word<span class="w"> </span>length<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>base<span class="w"> </span>path,<span class="w"> </span>typically<span class="w"> </span>signifying<span class="w"> </span>a<span class="w"> </span>web<span class="w"> </span>backend<span class="w"> </span>redirect<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="nb">true</span><span class="o">)</span>
+<span class="w">      </span>--responsecodes<span class="w"> </span>string<span class="w">        </span>Response<span class="w"> </span>codes<span class="w"> </span>to<span class="w"> </span>consider<span class="w"> </span>as<span class="w"> </span>valid<span class="w"> </span>responses<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;200-299&quot;</span><span class="o">)</span>
+<span class="w">      </span>--successfulonly<span class="w">              </span>Only<span class="w"> </span>show<span class="w"> </span>successful<span class="w"> </span>attempts
+
+Global<span class="w"> </span>Flags:
+<span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>string<span class="w">        </span>Output<span class="w"> </span>format<span class="w"> </span><span class="o">(</span>signal,<span class="w"> </span>json,<span class="w"> </span>yaml<span class="o">)</span>.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span>signal<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;signal&quot;</span><span class="o">)</span>
+<span class="w">  </span>-f,<span class="w"> </span>--output-file<span class="w"> </span>string<span class="w">   </span>Path<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>file.<span class="w"> </span>If<span class="w"> </span>blank,<span class="w"> </span>will<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>STDOUT
+<span class="w">  </span>-q,<span class="w"> </span>--quiet<span class="w">                </span>Suppress<span class="w"> </span>output
+<span class="w">      </span>--retries<span class="w"> </span>int<span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>attempts<span class="w"> </span>per<span class="w"> </span>credential<span class="w"> </span>pair
+<span class="w">      </span>--sleep<span class="w"> </span>int<span class="w">            </span>Sleep<span class="w"> </span><span class="nb">time</span><span class="w"> </span>between<span class="w"> </span>requests<span class="w"> </span><span class="o">(</span>seconds<span class="o">)</span>
+<span class="w">      </span>--targets<span class="w"> </span>strings<span class="w">      </span>The<span class="w"> </span>URL<span class="w"> </span>of<span class="w"> </span>target
+<span class="w">      </span>--timeout<span class="w"> </span>int<span class="w">          </span>Timeout<span class="w"> </span>per<span class="w"> </span>request<span class="w"> </span><span class="o">(</span>seconds<span class="o">)</span><span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="m">30</span><span class="o">)</span>
+<span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">              </span>Verbose<span class="w"> </span>output
+</code></pre></div>
+<h3 id="query">Query<a class="headerlink" href="#query" title="Permanent link">#</a></h3>
+<h4 id="usage_5">Usage<a class="headerlink" href="#usage_5" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>query<span class="w"> </span><span class="o">[</span>command<span class="o">]</span>
+</code></pre></div>
+<h4 id="commands_3">Commands<a class="headerlink" href="#commands_3" title="Permanent link">#</a></h4>
+<h5 id="reverseproxy">Reverseproxy<a class="headerlink" href="#reverseproxy" title="Permanent link">#</a></h5>
+<p>Perform Nginx specific reverse proxy injection tests against a target</p>
+<h6 id="usage_6">Usage<a class="headerlink" href="#usage_6" title="Permanent link">#</a></h6>
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>query<span class="w"> </span>reverseproxy<span class="w"> </span>--targets<span class="w"> </span>https://example.com<span class="w"> </span>--redirectaddress<span class="w"> </span><span class="m">127</span>.0.0.1
+</code></pre></div>
+<h6 id="help-text_2">Help Text<a class="headerlink" href="#help-text_2" title="Permanent link">#</a></h6>
+<div class="highlight"><pre><span></span><code>%<span class="w"> </span>method<span class="w"> </span>nginx<span class="w"> </span>query<span class="w"> </span>reverseproxy<span class="w"> </span>-h
+Perform<span class="w"> </span>injection<span class="w"> </span>tests<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>reverse<span class="w"> </span>proxy<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>target
+
+Usage:
+<span class="w">  </span>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>query<span class="w"> </span>reverseproxy<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+
+Flags:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                     </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>reverseproxy
+<span class="w">      </span>--redirectaddress<span class="w"> </span>string<span class="w">   </span>Specifies<span class="w"> </span>the<span class="w"> </span>target<span class="w"> </span>address<span class="w"> </span><span class="k">for</span><span class="w"> </span>redirection<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="o">)</span>
+
+Global<span class="w"> </span>Flags:
+<span class="w">  </span>-o,<span class="w"> </span>--output<span class="w"> </span>string<span class="w">        </span>Output<span class="w"> </span>format<span class="w"> </span><span class="o">(</span>signal,<span class="w"> </span>json,<span class="w"> </span>yaml<span class="o">)</span>.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span>signal<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;signal&quot;</span><span class="o">)</span>
+<span class="w">  </span>-f,<span class="w"> </span>--output-file<span class="w"> </span>string<span class="w">   </span>Path<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>file.<span class="w"> </span>If<span class="w"> </span>blank,<span class="w"> </span>will<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>STDOUT
+<span class="w">  </span>-q,<span class="w"> </span>--quiet<span class="w">                </span>Suppress<span class="w"> </span>output
+<span class="w">      </span>--retries<span class="w"> </span>int<span class="w">          </span>Number<span class="w"> </span>of<span class="w"> </span>attempts<span class="w"> </span>per<span class="w"> </span>credential<span class="w"> </span>pair
+<span class="w">      </span>--sleep<span class="w"> </span>int<span class="w">            </span>Sleep<span class="w"> </span><span class="nb">time</span><span class="w"> </span>between<span class="w"> </span>requests<span class="w"> </span><span class="o">(</span>seconds<span class="o">)</span>
+<span class="w">      </span>--targets<span class="w"> </span>strings<span class="w">      </span>The<span class="w"> </span>URL<span class="w"> </span>of<span class="w"> </span>target
+<span class="w">      </span>--timeout<span class="w"> </span>int<span class="w">          </span>Timeout<span class="w"> </span>per<span class="w"> </span>request<span class="w"> </span><span class="o">(</span>seconds<span class="o">)</span><span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="m">30</span><span class="o">)</span>
+<span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">              </span>Verbose<span class="w"> </span>output
+</code></pre></div>
 
 
 
@@ -1001,7 +1510,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../getting-started/basic-usage.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic Usage">
+          <a href="apache.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Apache">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1011,20 +1520,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Basic Usage
+                Apache
               </div>
             </div>
           </a>
         
         
           
-          <a href="apache.html" class="md-footer__link md-footer__link--next" aria-label="Next: Apache">
+          <a href="general.html" class="md-footer__link md-footer__link--next" aria-label="Next: General">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Apache
+                General
               </div>
             </div>
             <div class="md-footer__button md-icon">

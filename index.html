@@ -515,6 +515,117 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Capabilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Capabilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/apache.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/nginx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/general.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -763,9 +874,9 @@
 <li><a href="getting-started/installation.html">Installation documentation</a></li>
 </ul>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>spider<span class="w"> </span>--targets<span class="w"> </span>https://example.com,https://example.dev
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>nginx<span class="w"> </span>query<span class="w"> </span>reverseproxy<span class="w"> </span>--targets<span class="w"> </span>https://example.com,https://example.dev<span class="w"> </span>--redirectaddress<span class="w"> </span><span class="m">127</span>.0.0.1
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>path<span class="w"> </span>fuzz<span class="w"> </span>--targets<span class="w"> </span>example.com
+<div class="highlight"><pre><span></span><code>methodwebtest<span class="w"> </span>apache<span class="w"> </span>path<span class="w"> </span>traversal<span class="w"> </span>--targets<span class="w"> </span>https://example.com
 </code></pre></div>
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">#</a></h2>
 <p>Interested in contributing to methodwebtest? Please see our organization wide <a href="https://method-security.github.io/community/contribute/discussions.html">Contribution</a> page.</p>
