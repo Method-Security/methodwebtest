@@ -17,16 +17,16 @@ import (
 
 // InitGeneralCommand initializes the general command for the methodwebtest CLI.
 func (a *MethodWebTest) InitGeneralCommand() {
-	a.GeneralCmd = &cobra.Command{
+	generalCmd := &cobra.Command{
 		Use:   "general",
 		Short: "Perform general injection tests against a target",
 		Long:  `Perform general injection tests against a target`,
 	}
 
-	a.GeneralCmd.PersistentFlags().StringSlice("targets", []string{}, "The URL of target")
-	a.GeneralCmd.PersistentFlags().Int("timeout", 30, "Timeout per request (seconds)")
-	a.GeneralCmd.PersistentFlags().Int("sleep", 0, "Sleep time between requests (seconds)")
-	a.GeneralCmd.PersistentFlags().Int("retries", 0, "Number of attempts per credential pair")
+	generalCmd.PersistentFlags().StringSlice("targets", []string{}, "The URL of target")
+	generalCmd.PersistentFlags().Int("timeout", 30, "Timeout per request (seconds)")
+	generalCmd.PersistentFlags().Int("sleep", 0, "Sleep time between requests (seconds)")
+	generalCmd.PersistentFlags().Int("retries", 0, "Number of attempts per credential pair")
 
 	// headerCmd holds the subcommands for header injection tests
 	headerCmd := &cobra.Command{
@@ -219,7 +219,7 @@ func (a *MethodWebTest) InitGeneralCommand() {
 
 	headerCmd.AddCommand(userAgentCmd)
 
-	a.GeneralCmd.AddCommand(headerCmd)
+	generalCmd.AddCommand(headerCmd)
 
 	// pathCmd holds the subcommands for path injection tests
 	pathCmd := &cobra.Command{
@@ -381,7 +381,7 @@ func (a *MethodWebTest) InitGeneralCommand() {
 
 	pathCmd.AddCommand(traversalCmd)
 
-	a.GeneralCmd.AddCommand(pathCmd)
+	generalCmd.AddCommand(pathCmd)
 
 	// queryCmd holds the subcommands for query injection tests
 	multiCmd := &cobra.Command{
@@ -494,9 +494,9 @@ func (a *MethodWebTest) InitGeneralCommand() {
 	_ = multiCmd.MarkFlagRequired("variabledata")
 	_ = multiCmd.MarkFlagRequired("injectionlocation")
 
-	a.GeneralCmd.AddCommand(multiCmd)
+	generalCmd.AddCommand(multiCmd)
 
-	a.RootCmd.AddCommand(a.GeneralCmd)
+	a.RootCmd.AddCommand(generalCmd)
 }
 
 // LoadHeaderMisconfigurationConfig loads the configuration for a path-based fuzzing run.

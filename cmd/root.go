@@ -26,9 +26,6 @@ type MethodWebTest struct {
 	OutputSignal signal.Signal
 	RootCmd      *cobra.Command
 	VersionCmd   *cobra.Command
-	GeneralCmd   *cobra.Command
-	ApacheCmd    *cobra.Command
-	NginxCmd     *cobra.Command
 }
 
 // NewMethodWebTest creates a new MethodWebTest struct with the provided version string. The Webscan struct is used throughout the
