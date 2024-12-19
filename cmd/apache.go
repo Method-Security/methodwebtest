@@ -10,16 +10,16 @@ import (
 
 // InitApacheCommand initializes the apache command for the methodwebtest CLI.
 func (a *MethodWebTest) InitApacheCommand() {
-	a.ApacheCmd = &cobra.Command{
+	apacheCmd := &cobra.Command{
 		Use:   "apache",
 		Short: "Perform apache specific injection tests against a target",
 		Long:  `Perform apache specific injection tests against a target`,
 	}
 
-	a.ApacheCmd.PersistentFlags().StringSlice("targets", []string{}, "The URL of target")
-	a.ApacheCmd.PersistentFlags().Int("timeout", 30, "Timeout per request (seconds)")
-	a.ApacheCmd.PersistentFlags().Int("sleep", 0, "Sleep time between requests (seconds)")
-	a.ApacheCmd.PersistentFlags().Int("retries", 0, "Number of attempts per credential pair")
+	apacheCmd.PersistentFlags().StringSlice("targets", []string{}, "The URL of target")
+	apacheCmd.PersistentFlags().Int("timeout", 30, "Timeout per request (seconds)")
+	apacheCmd.PersistentFlags().Int("sleep", 0, "Sleep time between requests (seconds)")
+	apacheCmd.PersistentFlags().Int("retries", 0, "Number of attempts per credential pair")
 
 	// pathCmd holds the subcommands for path injection tests
 	pathCmd := &cobra.Command{
@@ -145,9 +145,9 @@ func (a *MethodWebTest) InitApacheCommand() {
 
 	pathCmd.AddCommand(traversalCmd)
 
-	a.ApacheCmd.AddCommand(pathCmd)
+	apacheCmd.AddCommand(pathCmd)
 
-	a.RootCmd.AddCommand(a.ApacheCmd)
+	a.RootCmd.AddCommand(apacheCmd)
 }
 
 func LoadPathModFileConfig(targets []string, timeout int, sleep int, retries int) *methodwebtest.PathModFileConfig {

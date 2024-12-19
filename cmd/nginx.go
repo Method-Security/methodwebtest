@@ -12,16 +12,16 @@ import (
 
 // InitNginxCommand initializes the nginx command for the methodwebtest CLI.
 func (a *MethodWebTest) InitNginxCommand() {
-	a.NginxCmd = &cobra.Command{
+	nginxCmd := &cobra.Command{
 		Use:   "nginx",
 		Short: "Perform nginx specific injection tests against a target",
 		Long:  `Perform nginx specific injection tests against a target`,
 	}
 
-	a.NginxCmd.PersistentFlags().StringSlice("targets", []string{}, "The URL of target")
-	a.NginxCmd.PersistentFlags().Int("timeout", 30, "Timeout per request (seconds)")
-	a.NginxCmd.PersistentFlags().Int("sleep", 0, "Sleep time between requests (seconds)")
-	a.NginxCmd.PersistentFlags().Int("retries", 0, "Number of attempts per credential pair")
+	nginxCmd.PersistentFlags().StringSlice("targets", []string{}, "The URL of target")
+	nginxCmd.PersistentFlags().Int("timeout", 30, "Timeout per request (seconds)")
+	nginxCmd.PersistentFlags().Int("sleep", 0, "Sleep time between requests (seconds)")
+	nginxCmd.PersistentFlags().Int("retries", 0, "Number of attempts per credential pair")
 
 	// headerCmd holds the subcommands for header injection tests
 	headerCmd := &cobra.Command{
@@ -86,7 +86,7 @@ func (a *MethodWebTest) InitNginxCommand() {
 
 	headerCmd.AddCommand(bufferoverflowContentCmd)
 
-	a.NginxCmd.AddCommand(headerCmd)
+	nginxCmd.AddCommand(headerCmd)
 
 	// pathCmd holds the subcommands for path injection tests
 	pathCmd := &cobra.Command{
@@ -165,7 +165,7 @@ func (a *MethodWebTest) InitNginxCommand() {
 
 	pathCmd.AddCommand(traversalCmd)
 
-	a.NginxCmd.AddCommand(pathCmd)
+	nginxCmd.AddCommand(pathCmd)
 
 	// queryCmd holds the subcommands for query injection tests
 	queryCmd := &cobra.Command{
@@ -230,9 +230,9 @@ func (a *MethodWebTest) InitNginxCommand() {
 
 	queryCmd.AddCommand(reverseproxyCmd)
 
-	a.NginxCmd.AddCommand(queryCmd)
+	nginxCmd.AddCommand(queryCmd)
 
-	a.RootCmd.AddCommand(a.NginxCmd)
+	a.RootCmd.AddCommand(nginxCmd)
 }
 
 func LoadHeaderBufferOverflowConfig(targets []string, bodySize int, timeout int, sleep int, retries int) *methodwebtest.HeaderBufferOverflowConfig {
