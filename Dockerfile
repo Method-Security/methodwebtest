@@ -1,10 +1,10 @@
 # Dockerfile used as distribution for the methodwebtest CLI in Tool container format
-FROM chromedp/headless-shell:129.0.6643.2 
+FROM alpine:3.20
 
 ARG CLI_NAME="methodwebtest"
 ARG TARGETARCH
 
-RUN apt-get update && apt-get install -y ca-certificates git
+RUN apk update && apk --no-cache add ca-certificates bash git
 
 # Setup Method Directory Structure
 RUN \
@@ -17,7 +17,8 @@ RUN \
   mkdir -p /opt/method/${CLI_NAME}/service/bin && \
   mkdir -p /mnt/output
 
-COPY configs/paths/*                  /opt/method/${CLI_NAME}/var/conf/paths/
+COPY configs/*                     /opt/method/${CLI_NAME}/var/conf/
+COPY configs/paths/*               /opt/method/${CLI_NAME}/var/conf/paths/
 
 COPY ${CLI_NAME} /opt/method/${CLI_NAME}/service/bin/${CLI_NAME}
 
