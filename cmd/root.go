@@ -28,7 +28,7 @@ type MethodWebTest struct {
 	VersionCmd   *cobra.Command
 }
 
-// NewMethodWebTest creates a new MethodWebTest struct with the provided version string. The Webscan struct is used throughout the
+// NewMethodWebTest creates a new MethodWebTest struct with the provided version string. The Methodwebtest struct is used throughout the
 // subcommands as a contex within which output results and configuration values can be stored.
 // We pass the version value in from the main.go file, where we set the version string during the build process.
 func NewMethodWebTest(version string) *MethodWebTest {
