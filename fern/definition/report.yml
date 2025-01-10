@@ -55,7 +55,7 @@ types:
       endTimestamp: datetime
       requestCount: integer
       baselineAttempt: optional<AttemptInfo>
-      attempts: list<AttemptInfo>
+      attempts: optional<list<AttemptInfo>>
   Report:
     properties:
       targets: optional<list<TargetInfo>>
