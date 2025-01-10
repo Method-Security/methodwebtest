@@ -2,6 +2,7 @@ package utils
 
 import (
 	"context"
+	"crypto/tls"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -120,7 +121,14 @@ func AnalyzeResponse(request methodwebtest.RequestInfo, validCodes map[int]bool,
 
 // baseLine gets the baseline size and word count of the target to be used for validation of the response
 func baseLine(baseTarget string) (int, int, error) {
-	resp, err := http.Get(baseTarget)
+	client := &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		},
+	}
+
+	// Make the HTTP request
+	resp, err := client.Get(baseTarget)
 	if err != nil {
 		return 0, 0, err
 	}
