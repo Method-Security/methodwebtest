@@ -39,15 +39,27 @@ func PerformSqliBooleanInjection(ctx context.Context, config *methodwebtest.Mult
 
 func checkForSqliBooleanBased(report *methodwebtest.Report) {
 	for _, target := range report.Targets {
-		bodySize := len(*target.BaselineAttempt.Request.ResponseBody)
+		if target.Attempts == nil {
+			continue
+		}
+		if target.BaselineAttempt == nil ||
+			target.BaselineAttempt.Request == nil ||
+			target.BaselineAttempt.Request.ResponseBody == nil {
+			continue
+		}
+		baselineBodySize := len(*target.BaselineAttempt.Request.ResponseBody)
 
 		for _, attempt := range target.Attempts {
 			finding := false
-			if attempt.Request != nil {
-				responseBody := *attempt.Request.ResponseBody
-				if float64(len(responseBody)) > float64(bodySize)*1.2 {
-					finding = true
-				}
+			if attempt.Request == nil {
+				continue
+			}
+			if attempt.Request.ResponseBody == nil {
+				continue
+			}
+			responseBody := *attempt.Request.ResponseBody
+			if float64(len(responseBody)) > float64(baselineBodySize)*1.2 {
+				finding = true
 			}
 			attempt.Finding = &finding
 		}

@@ -26,7 +26,7 @@ func PerformCommandEchoInjection(ctx context.Context, config *methodwebtest.Mult
 		Paths:             []string{"/"},
 		InjectedPayloads:  generatedInjectionPayloads,
 		InjectionLocation: config.InjectionLocation,
-		EventType:         methodwebtest.NewEventTypeFromMultiEvent(methodwebtest.MultiEventCommandtimedelay),
+		EventType:         methodwebtest.NewEventTypeFromMultiEvent(methodwebtest.MultiEventCommandecho),
 		Timeout:           config.Timeout,
 		Retries:           config.Retries,
 		Sleep:             config.Sleep,
@@ -39,18 +39,22 @@ func PerformCommandEchoInjection(ctx context.Context, config *methodwebtest.Mult
 
 func checkForCommandEcho(report *methodwebtest.Report) {
 	for _, target := range report.Targets {
+		if target.Attempts == nil {
+			continue
+		}
 		for _, attempt := range target.Attempts {
-			if attempt.Request != nil {
-				// Convert the response body to a string
-				responseBody := *attempt.Request.ResponseBody
-
-				finding := false
-				// Check if the response body contains the expected echoed string
-				if strings.Contains(responseBody, "cmd injection") {
-					finding = true
-				}
-				attempt.Finding = &finding
+			if attempt.Request == nil || attempt.Request.ResponseBody == nil {
+				continue
 			}
+			responseBody := *attempt.Request.ResponseBody
+
+			finding := false
+			// Check if the response body contains the expected echoed string
+			if strings.Contains(responseBody, "cmd injection") {
+				finding = true
+			}
+			attempt.Finding = &finding
+
 		}
 	}
 }

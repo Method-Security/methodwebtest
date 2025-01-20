@@ -39,20 +39,25 @@ func PerformCommandTimeDelayInjection(ctx context.Context, config *methodwebtest
 
 func checkForCommandTimeDelay(report *methodwebtest.Report, delayThreshold time.Duration) {
 	for _, target := range report.Targets {
+		if target.Attempts == nil {
+			continue
+		}
 		for _, attempt := range target.Attempts {
-			if attempt.Request != nil {
-				finding := false
-				if attempt.Request.StatusCode != nil && *attempt.Request.StatusCode >= 500 {
-					finding = false
-					attempt.Finding = &finding
-					continue
-				}
-				startTime := attempt.TimeSent
-				endTime := attempt.TimeReceived
-				responseTime := endTime.Sub(startTime)
-				finding = responseTime > delayThreshold*time.Millisecond
-				attempt.Finding = &finding
+			if attempt.Request == nil || attempt.Request.StatusCode == nil {
+				continue
 			}
+			finding := false
+			if *attempt.Request.StatusCode >= 500 {
+				finding = false
+				attempt.Finding = &finding
+				continue
+			}
+			startTime := attempt.TimeSent
+			endTime := attempt.TimeReceived
+			responseTime := endTime.Sub(startTime)
+			finding = responseTime > delayThreshold*time.Millisecond
+			attempt.Finding = &finding
+
 		}
 	}
 }

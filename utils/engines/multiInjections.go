@@ -51,6 +51,7 @@ func RunMultiInjectionsEngine(ctx context.Context, config *methodwebtest.Injecti
 				baselineAttemptInfo.TimeReceived = &endTime
 				baselineAttemptInfo.Request = &request
 				targetInfo.BaselineAttempt = &baselineAttemptInfo
+
 			}
 			for _, payload := range config.InjectedPayloads {
 				for i := 0; i <= config.Retries; i++ {
@@ -81,10 +82,12 @@ func RunMultiInjectionsEngine(ctx context.Context, config *methodwebtest.Injecti
 		targetInfo.RequestCount = len(attempts)
 		targetInfo.EndTimestamp = time.Now()
 		targets = append(targets, &targetInfo)
+
 	}
 
 	report.Targets = targets
 	report.Errors = allErrors
+
 	return &report
 }
 

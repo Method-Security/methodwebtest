@@ -46,20 +46,24 @@ func generateHTTPHeaders(target string) []map[string]string {
 
 func detectHTTPMethodInjection(report *methodwebtest.Report) {
 	for _, target := range report.Targets {
+		if target.Attempts == nil {
+			continue
+		}
 		for _, attempt := range target.Attempts {
 			finding := false
 
-			if attempt.Request.ResponseHeaders != nil {
-				headers := attempt.Request.ResponseHeaders
+			if attempt.Request == nil || attempt.Request.ResponseHeaders == nil {
+				continue
+			}
+			headers := attempt.Request.ResponseHeaders
 
-				// Check if "Access-Control-Allow-Methods" includes unsafe methods.
-				if methods, exists := headers["Access-Control-Allow-Methods"]; exists {
-					unsafeMethods := []string{"TRACE", "TRACK", "DELETE"}
-					for _, method := range unsafeMethods {
-						if strings.Contains(methods, method) {
-							finding = true
-							break
-						}
+			// Check if "Access-Control-Allow-Methods" includes unsafe methods.
+			if methods, exists := headers["Access-Control-Allow-Methods"]; exists {
+				unsafeMethods := []string{"TRACE", "TRACK", "DELETE"}
+				for _, method := range unsafeMethods {
+					if strings.Contains(methods, method) {
+						finding = true
+						break
 					}
 				}
 			}

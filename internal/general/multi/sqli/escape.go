@@ -57,6 +57,9 @@ func PerformSqliEscapeCharacterInjection(ctx context.Context, config *methodwebt
 
 func checkForEscapeCharacterHandling(report *methodwebtest.Report) {
 	for _, target := range report.Targets {
+		if target.Attempts == nil {
+			continue
+		}
 		baselineError := false
 
 		if target.BaselineAttempt != nil && target.BaselineAttempt.Request.StatusCode != nil && *target.BaselineAttempt.Request.StatusCode > 400 {
@@ -71,25 +74,29 @@ func checkForEscapeCharacterHandling(report *methodwebtest.Report) {
 				}
 			}
 		}
-
 		for _, attempt := range target.Attempts {
-			// Check HTTP status codes
+			if attempt.Request == nil || attempt.Request.StatusCode == nil {
+				continue
+			}
+
 			finding := false
-			if attempt.Request != nil {
-				statusCode := attempt.Request.StatusCode
-				if statusCode != nil && *statusCode >= 400 && !baselineError {
+			if !baselineError {
+				// Check for error status code
+				if *attempt.Request.StatusCode >= 400 {
 					finding = true
 				}
-			}
-			// Check for error phrases in the response body
-			if attempt.Request != nil {
-				responseBody := *attempt.Request.ResponseBody
-				for _, phrase := range errorPhrases {
-					if containsPhrase(responseBody, phrase) && !baselineError {
-						finding = true
+				// Check response body for error phrases
+				if !finding && attempt.Request.ResponseBody != nil {
+					responseBody := *attempt.Request.ResponseBody
+					for _, phrase := range errorPhrases {
+						if containsPhrase(responseBody, phrase) {
+							finding = true
+							break
+						}
 					}
 				}
 			}
+
 			attempt.Finding = &finding
 		}
 	}

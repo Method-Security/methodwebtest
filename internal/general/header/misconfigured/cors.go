@@ -74,38 +74,41 @@ func generateCORSHeaders(target string) []map[string]string {
 
 func detectCORSInjection(report *methodwebtest.Report) {
 	for _, target := range report.Targets {
+		if target.Attempts == nil {
+			continue
+		}
 		for _, attempt := range target.Attempts {
 			finding := false
+			if attempt.Request == nil || attempt.Request.ResponseHeaders == nil {
+				continue
+			}
+			headers := attempt.Request.ResponseHeaders
 
-			if attempt.Request.ResponseHeaders != nil {
-				headers := attempt.Request.ResponseHeaders
-
-				// Check if "Access-Control-Allow-Origin" is overly permissive (e.g., "*").
-				if origin, exists := headers["Access-Control-Allow-Origin"]; exists {
-					if origin == "*" {
-						finding = true
-					}
+			// Check if "Access-Control-Allow-Origin" is overly permissive (e.g., "*").
+			if origin, exists := headers["Access-Control-Allow-Origin"]; exists {
+				if origin == "*" {
+					finding = true
 				}
+			}
 
-				// Check if credentials are allowed in cross-origin requests.
-				if creds, exists := headers["Access-Control-Allow-Credentials"]; exists {
-					if creds == "true" {
-						finding = true
-					}
+			// Check if credentials are allowed in cross-origin requests.
+			if creds, exists := headers["Access-Control-Allow-Credentials"]; exists {
+				if creds == "true" {
+					finding = true
 				}
+			}
 
-				// Check if sensitive headers are exposed.
-				if exposedHeaders, exists := headers["Access-Control-Expose-Headers"]; exists {
-					if strings.Contains(exposedHeaders, "Authorization") || strings.Contains(exposedHeaders, "Set-Cookie") {
-						finding = true
-					}
+			// Check if sensitive headers are exposed.
+			if exposedHeaders, exists := headers["Access-Control-Expose-Headers"]; exists {
+				if strings.Contains(exposedHeaders, "Authorization") || strings.Contains(exposedHeaders, "Set-Cookie") {
+					finding = true
 				}
+			}
 
-				// Check if null origin was allowed.
-				if origin, exists := headers["Access-Control-Allow-Origin"]; exists {
-					if origin == "null" {
-						finding = true
-					}
+			// Check if null origin was allowed.
+			if origin, exists := headers["Access-Control-Allow-Origin"]; exists {
+				if origin == "null" {
+					finding = true
 				}
 			}
 

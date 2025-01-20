@@ -51,29 +51,30 @@ func detectHeaderMisconfigurationEscape(report *methodwebtest.Report) {
 		for _, attempt := range target.Attempts {
 			finding := false
 
-			if attempt.Request != nil {
-				headers := attempt.Request.ResponseHeaders
+			if attempt.Request == nil || attempt.Request.ResponseHeaders == nil {
+				continue
+			}
+			headers := attempt.Request.ResponseHeaders
 
-				// Check if injected headers are present in the response.
-				if injectedHeader, exists := headers["X-Injected-Header"]; exists {
-					if injectedHeader == "injected-value" {
-						finding = true
-					}
+			// Check if injected headers are present in the response.
+			if injectedHeader, exists := headers["X-Injected-Header"]; exists {
+				if injectedHeader == "injected-value" {
+					finding = true
 				}
+			}
 
-				// Check if Content-Length header injection is reflected or interpreted.
-				if contentLength, exists := headers["Content-Length"]; exists {
-					if contentLength == "0" {
-						finding = true
-					}
+			// Check if Content-Length header injection is reflected or interpreted.
+			if contentLength, exists := headers["Content-Length"]; exists {
+				if contentLength == "0" {
+					finding = true
 				}
+			}
 
-				// Check for escaped characters mishandling.
-				for key, value := range headers {
-					if strings.Contains(key, "\\") || strings.Contains(value, "\\") || strings.Contains(value, "\"") {
-						finding = true
-						break
-					}
+			// Check for escaped characters mishandling.
+			for key, value := range headers {
+				if strings.Contains(key, "\\") || strings.Contains(value, "\\") || strings.Contains(value, "\"") {
+					finding = true
+					break
 				}
 			}
 
