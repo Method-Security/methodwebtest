@@ -52,14 +52,22 @@ func PerformXSSAlertInjection(ctx context.Context, config *methodwebtest.MultiIn
 
 func checkForXSSAlert(report *methodwebtest.Report) {
 	for _, target := range report.Targets {
+		if target.Attempts == nil {
+			continue
+		}
 		for _, attempt := range target.Attempts {
+			if attempt.Request == nil || attempt.Request.ResponseBody == nil {
+				continue
+			}
 			finding := false
-			if attempt.Request != nil && attempt.Request.ResponseBody != nil && strings.Contains(*attempt.Request.ResponseBody, "alert('XSS')") {
+			if strings.Contains(*attempt.Request.ResponseBody, "alert('XSS')") {
 				finding = true
 			}
-			for _, headerValue := range attempt.Request.ResponseHeaders {
-				if strings.Contains(headerValue, "alert('XSS')") {
-					finding = true
+			if !finding && attempt.Request.ResponseHeaders != nil {
+				for _, headerValue := range attempt.Request.ResponseHeaders {
+					if strings.Contains(headerValue, "alert('XSS')") {
+						finding = true
+					}
 				}
 			}
 			attempt.Finding = &finding
