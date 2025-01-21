@@ -73,7 +73,7 @@ func RunPathTraversalEngine(ctx context.Context, config *methodwebtest.PathTrave
 					methodwebtest.HttpMethodGet,
 					requestParams,
 					[]*methodwebtest.EventType{methodwebtest.NewEventTypeFromPathEvent(methodwebtest.PathEventTraversal)},
-					config.Timeout)
+					config.Timeout, false)
 				endTime := time.Now()
 
 				isValid := AnalyzeResponse(request, validCodes, config.IgnoreBaseContent, baselineSize, baselineWords)
@@ -90,6 +90,7 @@ func RunPathTraversalEngine(ctx context.Context, config *methodwebtest.PathTrave
 				if config.Sleep > 0 {
 					time.Sleep(time.Duration(config.Sleep) * time.Second)
 				}
+
 			}
 		}
 		targetInfo.Attempts = attempts
@@ -105,7 +106,7 @@ func RunPathTraversalEngine(ctx context.Context, config *methodwebtest.PathTrave
 
 // AnalyzeResponse checks if the response singifies that file was found based on the response code and the baseline size and word count
 func AnalyzeResponse(request methodwebtest.RequestInfo, validCodes map[int]bool, ignoreBaseContent bool, baselineSize, baselineWords int) bool {
-	if request.StatusCode == nil || !validCodes[*request.StatusCode] {
+	if request.StatusCode == nil || !validCodes[*request.StatusCode] || request.ResponseBody == nil {
 		return false
 	}
 

@@ -32,7 +32,7 @@ func RunHeaderMisconfigurationEngine(ctx context.Context, config *methodwebtest.
 					config.Method,
 					methodwebtest.RequestParams{HeaderParams: headerGroup},
 					[]*methodwebtest.EventType{config.EventType},
-					config.Timeout)
+					config.Timeout, true)
 				endTime := time.Now()
 
 				attempt.TimeSent = startTime
