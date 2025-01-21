@@ -30,11 +30,11 @@ For the full list of available installation options, please see the [Installatio
 ### Examples
 
 ```bash
-methodwebtest TODO
+methodwebtest general path traversal --targets https://example.com --paths /.git/config
 ```
 
 ```bash
-methodwebtest TODO
+methodwebtest apache modfile --targets https://example.com 
 ```
 
 ### Building a Statically Compiled Container for Local Testing

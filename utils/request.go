@@ -3,6 +3,7 @@ package utils
 import (
 	"bytes"
 	"crypto/tls"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -241,6 +242,11 @@ func populateReport(report *methodwebtest.RequestInfo, statusCode int, headers m
 	}
 
 	report.ResponseBody = &body
+
+	// Encode the body to base64
+	encodedBody := base64.StdEncoding.EncodeToString([]byte(body))
+	report.ResponseBodyEncoded = &encodedBody
+
 	report.StatusCode = &statusCode
 
 	if len(params.PathParams) > 0 {

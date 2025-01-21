@@ -56,6 +56,7 @@ types:
       eventType: optional<list<EventType>>
       statusCode: optional<integer>
       responseBody: optional<string>
+      responseBodyEncoded: optional<string>
       responseHeaders: optional<map<string, string>>
       errors: optional<list<string>>
   # Request Params

@@ -1156,20 +1156,21 @@ func (q QueryEvent) Ptr() *QueryEvent {
 }
 
 type RequestInfo struct {
-	BaseUrl         string            `json:"baseUrl" url:"baseUrl"`
-	Path            string            `json:"path" url:"path"`
-	Method          HttpMethod        `json:"method" url:"method"`
-	PathParams      map[string]string `json:"pathParams,omitempty" url:"pathParams,omitempty"`
-	QueryParams     map[string]string `json:"queryParams,omitempty" url:"queryParams,omitempty"`
-	HeaderParams    map[string]string `json:"headerParams,omitempty" url:"headerParams,omitempty"`
-	BodyParams      *string           `json:"bodyParams,omitempty" url:"bodyParams,omitempty"`
-	FormParams      map[string]string `json:"formParams,omitempty" url:"formParams,omitempty"`
-	MultipartParams map[string]string `json:"multipartParams,omitempty" url:"multipartParams,omitempty"`
-	EventType       []*EventType      `json:"eventType,omitempty" url:"eventType,omitempty"`
-	StatusCode      *int              `json:"statusCode,omitempty" url:"statusCode,omitempty"`
-	ResponseBody    *string           `json:"responseBody,omitempty" url:"responseBody,omitempty"`
-	ResponseHeaders map[string]string `json:"responseHeaders,omitempty" url:"responseHeaders,omitempty"`
-	Errors          []string          `json:"errors,omitempty" url:"errors,omitempty"`
+	BaseUrl             string            `json:"baseUrl" url:"baseUrl"`
+	Path                string            `json:"path" url:"path"`
+	Method              HttpMethod        `json:"method" url:"method"`
+	PathParams          map[string]string `json:"pathParams,omitempty" url:"pathParams,omitempty"`
+	QueryParams         map[string]string `json:"queryParams,omitempty" url:"queryParams,omitempty"`
+	HeaderParams        map[string]string `json:"headerParams,omitempty" url:"headerParams,omitempty"`
+	BodyParams          *string           `json:"bodyParams,omitempty" url:"bodyParams,omitempty"`
+	FormParams          map[string]string `json:"formParams,omitempty" url:"formParams,omitempty"`
+	MultipartParams     map[string]string `json:"multipartParams,omitempty" url:"multipartParams,omitempty"`
+	EventType           []*EventType      `json:"eventType,omitempty" url:"eventType,omitempty"`
+	StatusCode          *int              `json:"statusCode,omitempty" url:"statusCode,omitempty"`
+	ResponseBody        *string           `json:"responseBody,omitempty" url:"responseBody,omitempty"`
+	ResponseBodyEncoded *string           `json:"responseBodyEncoded,omitempty" url:"responseBodyEncoded,omitempty"`
+	ResponseHeaders     map[string]string `json:"responseHeaders,omitempty" url:"responseHeaders,omitempty"`
+	Errors              []string          `json:"errors,omitempty" url:"errors,omitempty"`
 
 	extraProperties map[string]interface{}
 	_rawJSON        json.RawMessage
