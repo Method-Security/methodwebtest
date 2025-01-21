@@ -16,7 +16,7 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-func PerformRequestScan(baseURL, path string, method methodwebtest.HttpMethod, params methodwebtest.RequestParams, eventTypes []*methodwebtest.EventType, timeout int) methodwebtest.RequestInfo {
+func PerformRequestScan(baseURL, path string, method methodwebtest.HttpMethod, params methodwebtest.RequestParams, eventTypes []*methodwebtest.EventType, timeout int, followRedirects bool) methodwebtest.RequestInfo {
 	normalizedPath := strings.TrimRight(path, "/")
 	if normalizedPath == "" {
 		normalizedPath = "/"
@@ -61,7 +61,7 @@ func PerformRequestScan(baseURL, path string, method methodwebtest.HttpMethod, p
 
 	// Create and send the request based on the presence of escape characters
 	if !hasEscapeChars {
-		resp, err := sendRequest(method, fullURL.String(), reqBody, contentType, params.HeaderParams, timeout)
+		resp, err := sendRequest(method, fullURL.String(), reqBody, contentType, params.HeaderParams, timeout, followRedirects)
 		if err != nil {
 			request.Errors = append(request.Errors, err.Error())
 			return request
@@ -162,7 +162,7 @@ func prepareRequestBody(params methodwebtest.RequestParams) (io.Reader, string, 
 	return nil, "", nil
 }
 
-func sendRequest(method methodwebtest.HttpMethod, url string, body io.Reader, contentType string, headers map[string]string, timeout int) (*http.Response, error) {
+func sendRequest(method methodwebtest.HttpMethod, url string, body io.Reader, contentType string, headers map[string]string, timeout int, followRedirects bool) (*http.Response, error) {
 	req, err := http.NewRequest(string(method), url, body)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %v", err)
@@ -175,11 +175,26 @@ func sendRequest(method methodwebtest.HttpMethod, url string, body io.Reader, co
 		req.Header.Set("Content-Type", contentType)
 	}
 
-	client := &http.Client{
-		Timeout: time.Duration(timeout) * time.Second,
-		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-		},
+	var client *http.Client
+	if followRedirects {
+		//  Redirects allowed
+		client = &http.Client{
+			Timeout: time.Duration(timeout) * time.Second,
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+			},
+		}
+	} else {
+		// Disable redirects
+		client = &http.Client{
+			Timeout: time.Duration(timeout) * time.Second,
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+			},
+			CheckRedirect: func(req *http.Request, via []*http.Request) error {
+				return http.ErrUseLastResponse
+			},
+		}
 	}
 	resp, err := client.Do(req)
 	if err != nil {
