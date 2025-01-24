@@ -373,6 +373,7 @@ type PathTraversalConfig struct {
 	Retries           int      `json:"retries" url:"retries"`
 	Sleep             int      `json:"sleep" url:"sleep"`
 	SuccessfulOnly    bool     `json:"successfulOnly" url:"successfulOnly"`
+	Threshold         float64  `json:"threshold" url:"threshold"`
 
 	extraProperties map[string]interface{}
 	_rawJSON        json.RawMessage
@@ -716,6 +717,7 @@ type PathTraversalEngineConfig struct {
 	Retries           int      `json:"retries" url:"retries"`
 	Sleep             int      `json:"sleep" url:"sleep"`
 	SuccessfulOnly    bool     `json:"successfulOnly" url:"successfulOnly"`
+	Threshold         *float64 `json:"threshold,omitempty" url:"threshold,omitempty"`
 
 	extraProperties map[string]interface{}
 	_rawJSON        json.RawMessage

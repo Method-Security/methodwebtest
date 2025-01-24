@@ -12,16 +12,16 @@ func PerformGeneralPathTraversal(ctx context.Context, config *methodwebtest.Path
 		Targets:           config.Targets,
 		Paths:             config.Paths,
 		PathFiles:         config.PathLists,
+		QueryParam:        config.QueryParam,
 		ResponseCodes:     config.ResponseCodes,
 		IgnoreBaseContent: config.IgnoreBaseContent,
 		Timeout:           config.Timeout,
 		Retries:           config.Retries,
 		Sleep:             config.Sleep,
 		SuccessfulOnly:    config.SuccessfulOnly,
+		Threshold:         &config.Threshold,
 	}
-	if config.QueryParam != nil {
-		engineConfig.QueryParam = config.QueryParam
-	}
+
 	report := utils.RunPathTraversalEngine(ctx, &engineConfig)
 	report.Config = methodwebtest.NewEngineConfigFromPathTraversalEngineConfig(&engineConfig)
 	return report

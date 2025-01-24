@@ -36,6 +36,7 @@ types:
       retries: integer
       sleep: integer
       successfulOnly: boolean
+      threshold: optional<float>
   EngineConfig:
     union:
       InjectionEngineConfig: InjectionEngineConfig

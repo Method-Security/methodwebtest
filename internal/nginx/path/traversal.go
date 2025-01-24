@@ -36,6 +36,7 @@ func PerformNginxPathTraversal(ctx context.Context, config *methodwebtest.PathTr
 		Retries:           config.Retries,
 		Sleep:             config.Sleep,
 		SuccessfulOnly:    config.SuccessfulOnly,
+		Threshold:         &config.Threshold,
 	}
 	report := utils.RunPathTraversalEngine(ctx, &engineConfig)
 	report.Config = methodwebtest.NewEngineConfigFromPathTraversalEngineConfig(&engineConfig)
