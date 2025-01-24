@@ -144,9 +144,14 @@ func (a *MethodWebTest) InitNginxCommand() {
 				a.OutputSignal.AddError(err)
 				return
 			}
+			threshold, err := cmd.Flags().GetFloat64("threshold")
+			if err != nil {
+				a.OutputSignal.AddError(err)
+				return
+			}
 
 			// Load configuration
-			config := LoadPathTraversalConfig(targets, []string{}, []string{}, "", responseCodes, ignoreBase, timeout, sleep, retries, successfulOnly)
+			config := LoadPathTraversalConfig(targets, []string{}, []string{}, "", responseCodes, ignoreBase, timeout, sleep, retries, successfulOnly, threshold)
 
 			// Generate report
 			report := path.PerformNginxPathTraversal(cmd.Context(), config)
@@ -160,6 +165,7 @@ func (a *MethodWebTest) InitNginxCommand() {
 	traversalCmd.Flags().String("responsecodes", "200-299", "Response codes to consider as valid responses")
 	traversalCmd.Flags().Bool("ignorebasecontentmatch", true, "Ignores valid responses with identical size and word length to the base path, typically signifying a web backend redirect")
 	traversalCmd.Flags().Bool("successfulonly", false, "Only show successful attempts")
+	traversalCmd.Flags().Float64("threshold", 0.05, "Threshold for a negitive finding that represents the percentage difference between the size of the response body in question and the baseline response (0.0 is an exact match, with .05 being a 5 percent difference)")
 
 	_ = traversalCmd.MarkFlagRequired("targets")
 

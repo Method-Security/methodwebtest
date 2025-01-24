@@ -58,6 +58,7 @@ types:
       retries: integer
       sleep: integer
       successfulOnly: boolean
+      threshold: float
   # Query Configs
   QueryReverseProxyConfig:
     properties:

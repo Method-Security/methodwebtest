@@ -359,9 +359,14 @@ func (a *MethodWebTest) InitGeneralCommand() {
 				a.OutputSignal.AddError(err)
 				return
 			}
+			threshold, err := cmd.Flags().GetFloat64("threshold")
+			if err != nil {
+				a.OutputSignal.AddError(err)
+				return
+			}
 
 			// Load configuration
-			config := LoadPathTraversalConfig(targets, paths, pathlists, queryParam, responseCodes, ignoreBase, timeout, sleep, retries, successfulOnly)
+			config := LoadPathTraversalConfig(targets, paths, pathlists, queryParam, responseCodes, ignoreBase, timeout, sleep, retries, successfulOnly, threshold)
 
 			// Generate report
 			report := path.PerformGeneralPathTraversal(cmd.Context(), config)
@@ -378,6 +383,7 @@ func (a *MethodWebTest) InitGeneralCommand() {
 	traversalCmd.Flags().String("responsecodes", "200-299", "Response codes to consider as valid responses")
 	traversalCmd.Flags().Bool("ignorebasecontentmatch", true, "Ignores valid responses with identical size and word length to the base path, typically signifying a web backend redirect")
 	traversalCmd.Flags().Bool("successfulonly", false, "Only show successful attempts")
+	traversalCmd.Flags().Float64("threshold", 0.05, "Threshold for a negitive finding that represents the percentage difference between the size of the response body in question and the baseline response (0.0 is an exact match, with .05 being a 5 percent difference)")
 
 	pathCmd.AddCommand(traversalCmd)
 
@@ -594,7 +600,7 @@ func LoadPathCrlfConfig(targets []string, headerName string, headerValue string,
 }
 
 // LoadPathTraversalConfig loads the configuration for a path-based fuzzing run.
-func LoadPathTraversalConfig(targets, paths []string, pathlists []string, queryParam string, responseCodes string, ignoreBaseContent bool, timeout, sleep, retries int, successfulOnly bool) *methodwebtest.PathTraversalConfig {
+func LoadPathTraversalConfig(targets, paths []string, pathlists []string, queryParam string, responseCodes string, ignoreBaseContent bool, timeout, sleep, retries int, successfulOnly bool, threshold float64) *methodwebtest.PathTraversalConfig {
 	config := &methodwebtest.PathTraversalConfig{
 		Targets:           targets,
 		Paths:             paths,
@@ -605,6 +611,7 @@ func LoadPathTraversalConfig(targets, paths []string, pathlists []string, queryP
 		Sleep:             sleep,
 		Retries:           retries,
 		SuccessfulOnly:    successfulOnly,
+		Threshold:         threshold,
 	}
 	if queryParam != "" {
 		config.QueryParam = &queryParam

@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -76,7 +77,12 @@ func RunPathTraversalEngine(ctx context.Context, config *methodwebtest.PathTrave
 					config.Timeout, false)
 				endTime := time.Now()
 
-				isValid := AnalyzeResponse(request, validCodes, config.IgnoreBaseContent, baselineSize, baselineWords)
+				// Need to set for crlf module since it doenst have the threshold flag and defines its own analysis of
+				// valid findings
+				isValid := false
+				if config.Threshold != nil {
+					isValid = AnalyzeResponse(request, validCodes, config.IgnoreBaseContent, baselineSize, baselineWords, *config.Threshold)
+				}
 
 				// Marshal data
 				if !config.SuccessfulOnly || isValid {
@@ -105,15 +111,15 @@ func RunPathTraversalEngine(ctx context.Context, config *methodwebtest.PathTrave
 }
 
 // AnalyzeResponse checks if the response singifies that file was found based on the response code and the baseline size and word count
-func AnalyzeResponse(request methodwebtest.RequestInfo, validCodes map[int]bool, ignoreBaseContent bool, baselineSize, baselineWords int) bool {
+func AnalyzeResponse(request methodwebtest.RequestInfo, validCodes map[int]bool, checkBaseContentMatch bool, baselineSize, baselineWords int, threshold float64) bool {
 	if request.StatusCode == nil || !validCodes[*request.StatusCode] || request.ResponseBody == nil {
 		return false
 	}
 
 	bodySize := len(*request.ResponseBody)
 	wordCount := len(strings.Fields(*request.ResponseBody))
-	if ignoreBaseContent {
-		if bodySize == baselineSize && wordCount == baselineWords {
+	if checkBaseContentMatch {
+		if areSimilar(bodySize, baselineSize, threshold) && areSimilar(wordCount, baselineWords, threshold) {
 			return false
 		}
 	}
@@ -175,6 +181,7 @@ func parseResponseCodes(responseCodes string) (map[int]bool, error) {
 	}
 	return validCodes, nil
 }
+
 func gatherPaths(paths []string, pathLists []string) ([]string, error) {
 	pathsFromFiles, err := utils.GetEntriesFromFiles(pathLists)
 	if err != nil {
@@ -182,4 +189,15 @@ func gatherPaths(paths []string, pathLists []string) ([]string, error) {
 	}
 	allPaths := append(paths, pathsFromFiles...)
 	return allPaths, nil
+}
+
+// areSimilar is a function that checks if the value is similar to the baseline with a given tolerance
+// 0 is exact match
+// .50 is 50% difference
+// 1.00 is 100% difference
+// 2.00 is 200% difference
+func areSimilar(value, baseline int, tolerance float64) bool {
+	difference := math.Abs(float64(value - baseline))
+	percent := difference / float64(baseline)
+	return percent <= tolerance
 }

@@ -42,6 +42,7 @@ func PerformApachePathTraversal(ctx context.Context, config *methodwebtest.PathT
 		Retries:           config.Retries,
 		Sleep:             config.Sleep,
 		SuccessfulOnly:    config.SuccessfulOnly,
+		Threshold:         &config.Threshold,
 	}
 	report := utils.RunPathTraversalEngine(ctx, &engineConfig)
 	report.Config = methodwebtest.NewEngineConfigFromPathTraversalEngineConfig(&engineConfig)
