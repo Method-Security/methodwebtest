@@ -101,7 +101,7 @@ func (a *MethodWebTest) InitApacheCommand() {
 				a.OutputSignal.AddError(err)
 				return
 			}
-			ignoreBase, err := cmd.Flags().GetBool("ignore-base-content-match")
+			ignoreBase, err := cmd.Flags().GetBool("ignorebasecontentmatch")
 			if err != nil {
 				a.OutputSignal.AddError(err)
 				return

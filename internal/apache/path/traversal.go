@@ -15,7 +15,7 @@ var commonExposedPaths = []string{
 	"/cgi-bin/",
 	"/cgi-bin/admin.cgi",
 	"/cgi-bin/test.cgi",
-	"/cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd", //CVE-2021-41773
+	"/cgi-bin/.%2e/.%2e/.%2e/.%2e/etc/passwd",
 	"/etc/apache2/apache2.conf",
 	"/etc/apache2/sites-available/apache2.conf",
 	"/etc/httpd/conf/httpd.conf",
@@ -28,6 +28,15 @@ var commonExposedPaths = []string{
 	"/scripts/test.cgi",
 	"/server-status",
 	"/test.cgi",
+	"/admin.cgi",
+	"/login.cgi",
+	"/status.cgi",
+	"/user.cgi",
+	"/printenv.cgi",
+	"/cgi-bin/login.cgi",
+	"/cgi-bin/status.cgi",
+	"/cgi-bin/user.cgi",
+	"/cgi-bin/printenv.cgi",
 }
 
 func PerformApachePathTraversal(ctx context.Context, config *methodwebtest.PathTraversalConfig) *methodwebtest.Report {
