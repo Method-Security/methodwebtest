@@ -383,7 +383,7 @@ func (a *MethodWebTest) InitGeneralCommand() {
 	traversalCmd.Flags().String("responsecodes", "200-299", "Response codes to consider as valid responses")
 	traversalCmd.Flags().Bool("ignorebasecontentmatch", true, "Ignores valid responses with identical size and word length to the base path, typically signifying a web backend redirect")
 	traversalCmd.Flags().Bool("successfulonly", false, "Only show successful attempts")
-	traversalCmd.Flags().Float64("threshold", 0.05, "Threshold for a negitive finding that represents the percentage difference between the size of the response body in question and the baseline response (0.0 is an exact match, with .05 being a 5 percent difference)")
+	traversalCmd.Flags().Float64("threshold", 0.10, "Threshold for a negitive finding that represents the percentage difference between the size of the response body in question and the baseline response (0.0 is an exact match, with .05 being a 5 percent difference)")
 
 	pathCmd.AddCommand(traversalCmd)
 
