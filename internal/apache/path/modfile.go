@@ -70,11 +70,17 @@ func detectModFileRCE(report *methodwebtest.Report) {
 		"total",      // Common output of ls -la
 	}
 	for _, target := range report.Targets {
+		if target.Attempts == nil {
+			continue
+		}
 		for _, attempt := range target.Attempts {
 			finding := false
-			for _, indicator := range indicators {
-				if strings.Contains(*attempt.Request.ResponseBody, indicator) {
-					finding = true
+
+			if attempt.Request != nil && attempt.Request.ResponseBody != nil {
+				for _, indicator := range indicators {
+					if strings.Contains(*attempt.Request.ResponseBody, indicator) {
+						finding = true
+					}
 				}
 			}
 			attempt.Finding = &finding
