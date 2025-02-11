@@ -37,6 +37,7 @@ types:
       sleep: integer
       successfulOnly: boolean
       threshold: optional<float>
+      maxRunTime: optional<integer>
   EngineConfig:
     union:
       InjectionEngineConfig: InjectionEngineConfig

@@ -37,6 +37,12 @@ func RunPathTraversalEngine(ctx context.Context, config *methodwebtest.PathTrave
 
 	var targets []*methodwebtest.TargetInfo
 	for _, target := range config.Targets {
+		// Check if context has expired
+		if ctx.Err() != nil {
+			report.Errors = append(report.Errors, "Path traversal engine timeout exceeded")
+			break
+		}
+
 		targetInfo := methodwebtest.TargetInfo{Target: target, StartTimestamp: time.Now()}
 
 		// Get baseline size and word count
@@ -56,6 +62,12 @@ func RunPathTraversalEngine(ctx context.Context, config *methodwebtest.PathTrave
 		var attempts []*methodwebtest.AttemptInfo
 		for _, injectionPath := range allPaths {
 			for i := 0; i <= config.Retries; i++ {
+				// Check if context has expired
+				if ctx.Err() != nil {
+					report.Errors = append(report.Errors, "Path traversal engine timeout exceeded")
+					break
+				}
+
 				attemptInfo := methodwebtest.AttemptInfo{}
 
 				// Path injection location

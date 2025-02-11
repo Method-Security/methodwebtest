@@ -59,6 +59,7 @@ types:
       sleep: integer
       successfulOnly: boolean
       threshold: float
+      maxRunTime: optional<integer>
   # Query Configs
   QueryReverseProxyConfig:
     properties:
