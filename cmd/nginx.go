@@ -151,7 +151,7 @@ func (a *MethodWebTest) InitNginxCommand() {
 			}
 
 			// Load configuration
-			config := LoadPathTraversalConfig(targets, []string{}, []string{}, "", responseCodes, ignoreBase, timeout, sleep, retries, successfulOnly, threshold)
+			config := LoadPathTraversalConfig(targets, []string{}, []string{}, "", responseCodes, ignoreBase, timeout, sleep, retries, successfulOnly, threshold, nil)
 
 			// Generate report
 			report := path.PerformNginxPathTraversal(cmd.Context(), config)
